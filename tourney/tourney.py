@@ -16,8 +16,8 @@ import os
 from fake_useragent import UserAgent
 
 lastTag = '0'
-creditIcon = "https://i.imgur.com/TP8GXZb.png"
-credits = "Bot by GR8 | Titan"
+creditIcon = "https://i.imgur.com/D2T2Mpl.jpg"
+credits = "Bot by Blessedville"
 
 proxies_list = ['195.162.4.111:3239','94.249.160.49:2179','173.211.31.3:3133','45.43.218.82:3212','45.43.219.185:3315','172.82.173.100:3230','172.82.177.111:5241','64.44.18.31:3161','107.175.43.100:3230','93.127.128.41:3171']
 
