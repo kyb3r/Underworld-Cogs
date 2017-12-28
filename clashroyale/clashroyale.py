@@ -19,8 +19,8 @@ import requests_cache
 requests_cache.install_cache('statsroyale_cache', backend='sqlite', expire_after=60)
 
 BOTCOMMANDER_ROLES =  ["Family Representative", "Clan Manager", "Clan Deputy", "Co-Leader", "Hub Officer", "admin"];
-creditIcon = "https://i.imgur.com/TP8GXZb.png"
-credits = "Bot by GR8 | Titan"
+creditIcon = "https://i.imgur.com/D2T2Mpl.jpg"
+credits = "Bot by Blessedville"
 
 clash = os.path.join("cogs", "tags.json")
 clash_mini = os.path.join("cogs", "mini_tags.json")
@@ -269,7 +269,7 @@ class clashroyale:
 		    profiledata = requests.get('http://api.cr-api.com/player/{}'.format(profiletag), headers=self.getAuth(), timeout=10).json()
 
 		    if "8CL09V0C" not in profiledata['clan']['tag']:
-		    	await self.bot.say("This feature is only available to members of LeGEnD Minis!")
+		    	await self.bot.say("This feature is only available to members of UnderWorld!")
 		    	return
 
 		    self.clash_mini.update({member.id: {'tag': profiledata['tag']}})
