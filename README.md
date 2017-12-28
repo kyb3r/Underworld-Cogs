@@ -2,7 +2,7 @@
 
 Made with Python and [RED](https://github.com/Cog-Creators/Red-DiscordBot).
 
-If you want to see this bot in action, join the UnderWorld Family Discord at https://discord.me/underworldfamily
+If you want to see this bot in action, join the UnderWorld Family Discord at https://discord.me/underworldcr
 
 ## Cogs
 
