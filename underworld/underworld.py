@@ -11,8 +11,8 @@ from random import choice as rand_choice
 import string
 import datetime
 
-creditIcon = "https://i.imgur.com/TP8GXZb.png"
-credits = "Bot by GR8 | Titan"
+creditIcon = "https://i.imgur.com/D2T2Mpl.jpg"
+credits = "Bot by Blessedville"
 BOTCOMMANDER_ROLES =  ["Family Representative", "Clan Manager", "Clan Deputy", "Co-Leader", "Hub Officer", "admin"];
 
 rules_text = """**Here are some Legend Family Discord server rules.**\n
@@ -31,28 +31,22 @@ commands_text =  """Here are some of the Legend Family Bot commands, you can use
 **!offers** - view your upcoming shop offers.
 **!tourney** - to instantly recieve an open tournament that is available to join.
 **!topmembers** - shows the top ranked players in our family.
-**!payday** - receive your 300 credits every 30 minutes.
-**!heist** - Play a heist with a crew in #heist channel.
-**!slot** - Play the slot machine.
-**!buy** - Take a look at what you can purchase with your credits.
-**!balance** - To check your current bank balance.
 **!profile** - view your server profile.
 **!deck** - make and save your deck.
-**!legend** - to see status of all Legend Family clans.
+**!underworld** - to see status of all UnderWorld Family clans.
 **!rep @user** - give reputation points to users.
 **!remindme** - Use this command to make the bot remind you of something in the future.
-**!trivia** - start a trivia of your choice. Bot will ask you questions, you will get points of answering them.
 **!queue** -  Listen to songs, type with command with the song name inside a voice channel. (!skip, !pause, !resume, !playlist).\n
 **You can type !help here to see the full commands list**"""
 
 info_text = """You will find several channels on our Discord Server\n
-**#global-chat**: to discuss about the game.
+**#underworld_chat**: to discuss about the game.
 **#tourneys**: Dozens of tournaments posted everyday. 
-**#news**: important info about family.
-**#deck-recommendation**: decks discussion.
-**#off-topic**: you can chat about anything unrelated to clash royale here.
-**#bots-spam**: play bot commands, You can mute the channels you don't need in DISCORD settings.
-**#friends-forever**: Post your Clash friend invite link or add others.
+**#announcements**: important info about family.
+**#strategy**: decks discussion.
+**#visitor_chat**: you can chat about anything unrelated to clash royale here.
+**#bot_spam**: play bot commands, You can mute the channels you don't need in DISCORD settings.
+**#friend-stalking**: Post your Clash friend invite link or add others.
 """
 cw_info = """We organize a **clanwar** every weekend, which aims to determine **which clan is the strongest**. 
 
@@ -66,45 +60,24 @@ There are 2 factors to win: convince more players to participate within your cla
 **3 golden Rules for clanwars:** We respect the Opponent (no BMing if you win), we play to have fun (no obligation to participate), and don't join if you think you cannot play.
 """
 
-esports_info = """The LeGeND Esports Team is recruiting all active and aspiring players!
+esports_info = """The UW eSports Team is recruiting all active and aspiring players!
 
-With the goal of encouraging competitive play in the family, there is a monthly ranked season system on the Esports Team Server where players compete to play on LeGeND Esports A Team and B team to represent the family in various North American events. Our strongest players will compete side by side with the very best in leagues such as CCTS, CPL, and even RPL!
+With the goal of encouraging competitive play in the family, there is a monthly ranked season system on the eSports Team Server where players compete to play on UW eSports A Team and B team to represent the family in various International events. Our strongest players will compete side by side with the very best in leagues such as CCTS, CPL, and even RPL!
 
-While we have a clan called LeGeND Esports!, the team operates separately from the clan, and sends members from any family clan to events.
+While we have a clan called UW eSports!, the team operates separately from the clan, and sends members from any family clan to events.
 
 But please remember that this is a more professional setting than the rest of the family and poor behaviour will not be tolerated. 
 
-Please note that if you just lurk in the server and not participate for a long period of time you will be kicked off the server.
-
-https://discord.gg/CN47Tkx
 """
 
-coc_bs = """We also play **Clash of Clans** and **Brawl Stars**, we would like to invite to you join them if you play either of these supercell games.
-
-• Clash of Clans - **LeGeND Raiders! (#JQJRGVJU)** - https://discord.gg/BG7wMFw
-• Brawl Stars - **LeGeND Bandits! (#L8V8UYC)** - https://discord.gg/brVC4Cz
-
-You can send a request to join with the message "from LEGEND". Join the discord server when you are accepted.
-"""
-
-social_info = """Stay Social! Come and follow us on these platforms to stay up to date on the latest news and announcements.
-
-https://twitter.com/TheLegendClans
-https://www.facebook.com/LegendClans
-https://www.instagram.com/legendclans
-
-Visit our website to see live clan statistics:
-https://legendclans.com
-"""
-
-class legend:
+class underworld:
 
     def __init__(self, bot):
         self.bot = bot
         self.clash = dataIO.load_json('cogs/tags.json')
         self.c = dataIO.load_json('cogs/clans.json')
         self.auth = dataIO.load_json('cogs/auth.json')
-        self.welcome = dataIO.load_json('data/legend/welcome.json')
+        self.welcome = dataIO.load_json('data/underworld/welcome.json')
         self.bank = dataIO.load_json('data/economy/bank.json')
 
     async def updateClash(self):
@@ -244,8 +217,8 @@ class legend:
             return False
 
     @commands.command(pass_context=True)
-    async def legend(self, ctx, member: discord.Member = None):
-        """ Show Legend clans, can also show clans based on a member's trophies"""
+    async def underworld(self, ctx, member: discord.Member = None):
+        """ Show UnderWorld clans, can also show clans based on a member's trophies"""
 
         if member is None:
             trophies = 9999
@@ -285,7 +258,7 @@ class legend:
         totalMembers = sum(clans[x]['memberCount'] for x in range(len(clans)))
 
         embed=discord.Embed(title="", description="Our Family is made up of " + str(self.numClans()) + " clans with a total of " + str(totalMembers) + " members. We have " + str((self.numClans()*50)-totalMembers) + " spots left.", color=0xf1c747)
-        embed.set_author(name="LeGeND Family Clans", url="http://cr-api.com/clan/family/legend", icon_url="https://i.imgur.com/dtSMITE.jpg")
+        embed.set_author(name="UnderWorld Family Clans", url="https://cr-api.com/clan/family/uwrl/clans", icon_url="https://i.imgur.com/Ix5767j.jpg")
         embed.set_footer(text=credits, icon_url=creditIcon)
 
         foundClan = False
@@ -333,7 +306,7 @@ class legend:
                 embed.add_field(name=title, value=desc, inline=False)
 
         if foundClan is False:
-            embed.add_field(name="uh oh!", value="There are no clans available for you at the moment, please type !legend to see all clans.", inline=False)
+            embed.add_field(name="uh oh!", value="There are no clans available for you at the moment, please type !underworld to see all clans.", inline=False)
 
         await self.bot.say(embed=embed)
 
@@ -343,10 +316,10 @@ class legend:
         
         server = ctx.message.server
         author = ctx.message.author
-        legendServer = ["374596069989810176"]
+        underworldServer = ["286936705427308547"]
 
-        if server.id not in legendServer:
-            await self.bot.say("This command can only be executed in the LeGeND Family Server")
+        if server.id not in underworldServer:
+            await self.bot.say("This command can only be executed in the UnderWorld Family Server")
             return
 
         isMember = await self._is_member(member)
@@ -427,7 +400,7 @@ class legend:
             await self.bot.say(mymessage)
 
             welcomeMsg = rand_choice(self.welcome["GREETING"])
-            await self.bot.send_message(discord.Object(id='374596069989810178'), welcomeMsg.format(member, server))
+            await self.bot.send_message(discord.Object(id='286936705427308547'), welcomeMsg.format(member, server))
 
             await self._remove_roles(member, ['Guest'])
 
@@ -446,7 +419,7 @@ class legend:
                     )
 
             roleName = discord.utils.get(server.roles, name=role_names[0])
-            await self.bot.send_message(discord.Object(id='375839851955748874'), '**' + ctx.message.author.name + '** recruited ' + '** ' + ign + ' (#'+ profiletag + ')** to ' + roleName.mention)
+            await self.bot.send_message(discord.Object(id='286936705427308547'), '**' + ctx.message.author.name + '** recruited ' + '** ' + ign + ' (#'+ profiletag + ')** to ' + roleName.mention)
 
             await asyncio.sleep(300)
             await self.bot.send_message(member,rules_text)
@@ -528,10 +501,10 @@ class legend:
         """ Check to see if your clan members are setup properly in discord."""
         server = ctx.message.server
         author = ctx.message.author
-        legendServer = ["374596069989810176"]
+        underworldServer = ["286936705427308547"]
 
-        if server.id not in legendServer:
-            await self.bot.say("This command can only be executed in the LeGeND Family Server")
+        if server.id not in underworldServer:
+            await self.bot.say("This command can only be executed in the UnderWorld Family Server")
             return
 
         clankey = clankey.lower()
@@ -644,13 +617,13 @@ class legend:
 
     @commands.command()
     async def topmembers(self, number=10):
-        """Show Top Legend Family Members"""
+        """Show Top UnderWorld Family Members"""
 
         if number > 100:
             await self.bot.say("Sorry! the number must be below 50.")
             return
 
-        await self.bot.say("**LeGeND Family Top Players**")
+        await self.bot.say("**UnderWorld Family Top Players**")
         await self.bot.type()
 
         allplayers = requests.get('http://cr-api.com/clan/family/legend/members/datatable', timeout=15).json()
