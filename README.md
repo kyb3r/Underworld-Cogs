@@ -9,7 +9,6 @@ If you want to see this bot in action, join the UnderWorld Family Discord at htt
  * **clashroyale** - Clash Royale clan info, profile info, chest cycle and shop offers.
  * **underworld** - Management system for UnderWorld Family. Used for recruits.
  * **tourney** - Clash Royale open tournament finder.
- * **shop** - reward people for donations and crowns in credits.
 
 ## Installation
 
