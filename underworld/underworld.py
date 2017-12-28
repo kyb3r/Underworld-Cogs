@@ -15,17 +15,16 @@ creditIcon = "https://i.imgur.com/D2T2Mpl.jpg"
 credits = "Bot by Blessedville"
 BOTCOMMANDER_ROLES =  ["Family Representative", "Clan Manager", "Clan Deputy", "Co-Leader", "Hub Officer", "admin"];
 
-rules_text = """**Here are some Legend Family Discord server rules.**\n
+rules_text = """**Here are some UnderWorld Family Discord server rules.**\n
 • Be respectful of other members. Do not talk them down in any way.
 • Respect others' opinions. If you disagree, please do so in a constructive manner.
 • Do not spam, and avoid ever using @everyone or @here without permission from clan managers or deputies.
 • Be careful with sarcasm: sarcasm with no tone doesn't work via text.
 • Respect and do not subvert moderators and managers.
-• If you are transferring from one Legend Family clan to another, please contact your destination clan's clan leader first, and wait for the all clear from that clan leader.
 • A good rule is to talk to people as if you were talking to them face to face.\n
 **Violation of these roles will lead to punishment including temporary guest role reduced access, temporary kick from server, or permanent kick from server, depending on the severity and/or frequency of the offense**"""
 
-commands_text =  """Here are some of the Legend Family Bot commands, you can use them in the #bot-spam channel.\n
+commands_text =  """Here are some of the UnderWorld Family Bot commands, you can use them in the #bot_spam channel.\n
 **!clashProfile** - to view your Clash Royale stats.
 **!chests** - to view your upcoming chests you will receive.
 **!offers** - view your upcoming shop offers.
@@ -50,7 +49,7 @@ info_text = """You will find several channels on our Discord Server\n
 """
 cw_info = """We organize a **clanwar** every weekend, which aims to determine **which clan is the strongest**. 
 
-The **idea** is simple: A private tournament that anyone may join **within LeGeND and the alliance. **
+The **idea** is simple: A private tournament that anyone may join **within UnderWorld and the alliance. **
 Score is calculated in a way that allows every participant to contribute to help their clan win.  We sum the earned tournament trophies of the members of each clan to calculate a clan score, clan with highest clan score is declared the **winner**! 
 
 There are 2 factors to win: convince more players to participate within your clan and earn more tournament trophies. Both are **equally important**. We publish tourneys and passwords at same time, so we give equal chances to each clan and player. 
@@ -258,7 +257,7 @@ class underworld:
         totalMembers = sum(clans[x]['memberCount'] for x in range(len(clans)))
 
         embed=discord.Embed(title="", description="Our Family is made up of " + str(self.numClans()) + " clans with a total of " + str(totalMembers) + " members. We have " + str((self.numClans()*50)-totalMembers) + " spots left.", color=0xf1c747)
-        embed.set_author(name="UnderWorld Family Clans", url="https://cr-api.com/clan/family/uwrl/clans", icon_url="https://i.imgur.com/Ix5767j.jpg")
+        embed.set_author(name="UnderWorld Family Clans", url=" http://cr-api.com/clan/family/uwrl", icon_url="https://i.imgur.com/Ix5767j.jpg")
         embed.set_footer(text=credits, icon_url=creditIcon)
 
         foundClan = False
@@ -626,7 +625,7 @@ class underworld:
         await self.bot.say("**UnderWorld Family Top Players**")
         await self.bot.type()
 
-        allplayers = requests.get('http://cr-api.com/clan/family/legend/members/datatable', timeout=15).json()
+        allplayers = requests.get('http://cr-api.com/clan/family/uwrl/members/datatable', timeout=15).json()
         players = dict(allplayers)
         players['data'] = sorted(allplayers['data'], key=lambda x: x["family_rank_score"])
         
@@ -668,10 +667,10 @@ class underworld:
         """Send instructions to people joining a clan"""
         server = ctx.message.server
         author = ctx.message.author
-        legendServer = ["374596069989810176"]
+        underworldServer = ["286936705427308547"]
 
-        if server.id not in legendServer:
-            await self.bot.say("This command can only be executed in the LeGeND Family Server")
+        if server.id not in underworldServer:
+            await self.bot.say("This command can only be executed in the UnderWorld Family Server")
             return
 
         allowed = await self._is_commander(author)
@@ -776,7 +775,7 @@ class underworld:
             await self.bot.say(member.mention + " has been approved for **" + clan_name + "**. Please check your DM for instructions on how to join.")
 
             roleName = discord.utils.get(server.roles, name=clan_role)
-            await self.bot.send_message(discord.Object(id='375839851955748874'), roleName.mention + " \nName: " + ign + "\n" + "Recruit Code: ``" + recruitCode + "``")
+            await self.bot.send_message(discord.Object(id='286936705427308547'), roleName.mention + " \nName: " + ign + "\n" + "Recruit Code: ``" + recruitCode + "``")
         else:
             await self.bot.say("Approval failed, You are already a part of a clan in the family.")
 
@@ -785,9 +784,9 @@ class underworld:
         """Add people to the waiting list for a clan"""
         server = ctx.message.server
         author = ctx.message.author
-        legendServer = ["374596069989810176"]
+        underworldServer = ["286936705427308547"]
 
-        if server.id not in legendServer:
+        if server.id not in undeworldServer:
             await self.bot.say("This command can only be executed in the LeGeND Family Server")
             return
 
@@ -869,10 +868,10 @@ class underworld:
         """Delete people from the waiting list for a clan"""
         server = ctx.message.server
         author = ctx.message.author
-        legendServer = ["374596069989810176"]
+        underworldServer = ["286936705427308547"]
 
-        if server.id not in legendServer:
-            await self.bot.say("This command can only be executed in the LeGeND Family Server")
+        if server.id not in underworldServer:
+            await self.bot.say("This command can only be executed in the UnderWorld Family Server")
             return
 
         allowed = await self._is_commander(author)
@@ -916,10 +915,10 @@ class underworld:
 
         server = ctx.message.server
         author = ctx.message.author
-        legendServer = ["374596069989810176"]
+        underworldServer = ["286936705427308547"]
 
-        if server.id not in legendServer:
-            await self.bot.say("This command can only be executed in the LeGeND Family Server")
+        if server.id not in underworldServer:
+            await self.bot.say("This command can only be executed in the UnderWorld Family Server")
             return
 
         await self.bot.type()
@@ -945,7 +944,7 @@ class underworld:
             await self.bot.say("The waiting list is empty")
         else:
             embed.description = "We have " + str(counterPlayers) + " people waiting for " + str(counterClans) + " clans."
-            embed.set_author(name="LeGeND Family Waiting List", icon_url="https://i.imgur.com/dtSMITE.jpg")
+            embed.set_author(name="UnderWorld Family Waiting List", icon_url="https://i.imgur.com/Ix5767j.jpg")
             embed.set_footer(text=credits, icon_url=creditIcon)
             await self.bot.say(embed=embed)
 
@@ -955,10 +954,10 @@ class underworld:
 
         server = ctx.message.server
         author = ctx.message.author
-        legendServer = ["374596069989810176"]
+        underworldServer = ["286936705427308547"]
 
-        if server.id not in legendServer:
-            await self.bot.say("This command can only be executed in the LeGeND Family Server")
+        if server.id not in underworldServer:
+            await self.bot.say("This command can only be executed in the UnderWorld Family Server")
             return
 
         allowed = await self._is_commander(author)
@@ -1016,9 +1015,9 @@ class underworld:
 
 
 def check_folders():
-    if not os.path.exists("data/legend"):
-        print("Creating data/legend folder...")
-        os.makedirs("data/legend")
+    if not os.path.exists("data/underworld"):
+        print("Creating data/underworld folder...")
+        os.makedirs("data/underworld")
 
 def check_files():
     f = "cogs/tags.json"
@@ -1058,4 +1057,4 @@ def setup(bot):
     check_files()
     check_clans()
     check_auth()
-    bot.add_cog(legend(bot))
+    bot.add_cog(superblessed(bot))
